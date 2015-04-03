@@ -47,7 +47,7 @@ module Gmail
         opts[:query]      and search.concat opts[:query]
 
         @gmail.mailbox(name) {
-          @gmail.conn.uid_search(search)
+          @gmail.conn.uid_search(search.join(" "))
         }
       elsif args.first.is_a?(Hash)
         fetch_uids(:all, args.first)
